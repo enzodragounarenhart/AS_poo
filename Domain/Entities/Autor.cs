@@ -7,7 +7,6 @@ namespace AS_poo.Domain.Entities
 {
     public class Autor : Entity
     {
-        public int idAutor { get; set; }
         public string nome { get; set; }
         public string cpf { get; set; }
         public string endereco { get; set; }

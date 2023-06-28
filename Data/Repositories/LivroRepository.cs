@@ -18,7 +18,7 @@ namespace AS_poo.Data.Repositories
 
         public Livro GetById(int entityId)
         {
-            return context.Livro.SingleOrDefault(x=>x.idLivro ==entityId);
+            return context.Livro.SingleOrDefault(x=>x.Id ==entityId);
         }
 
         public IList<Livro> GetAll()

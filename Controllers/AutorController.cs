@@ -78,7 +78,7 @@ namespace AS_poo.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             if(_repository.Delete(id))

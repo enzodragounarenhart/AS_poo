@@ -18,7 +18,7 @@ namespace AS_poo.Data.Repositories
 
         public Autor GetById(int entityId)
         {
-            return context.Autor.SingleOrDefault(x=>x.idAutor ==entityId);
+            return context.Autor.SingleOrDefault(x=>x.Id ==entityId);
         }
 
         public IList<Autor> GetAll()

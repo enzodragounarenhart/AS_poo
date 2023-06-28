@@ -12,16 +12,11 @@ namespace AS_poo.Data
     {
         public string DbPath {get;}
 
-        public DataContext()
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-            var path = Directory.GetCurrentDirectory();
-            DbPath = System.IO.Path.Join(path, "as_db.db");
+            
 
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
-            => optionsBuilder.UseSqlite($"Data Source ={DbPath}");
-
         public DbSet<Usuario> Usuario { get; set;}
         public DbSet<Autor> Autor { get; set;}
         public DbSet<Livro> Livro { get; set;}

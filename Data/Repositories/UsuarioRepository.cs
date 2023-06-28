@@ -18,7 +18,7 @@ namespace AS_poo.Data.Repositories
 
         public Usuario GetById(int entityId)
         {
-            return context.Usuario.SingleOrDefault(x=>x.idUsuario ==entityId);
+            return context.Usuario.SingleOrDefault(x=>x.Id ==entityId);
         }
 
         public IList<Usuario> GetAll()

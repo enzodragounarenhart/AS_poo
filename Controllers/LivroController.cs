@@ -19,8 +19,9 @@ namespace AS_poo.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ILivroRepository _repository;
+        private readonly IUsuarioRepository _usuarioRepository;
 
-        public LivroController(ILivroRepository repository, IMapper mapper)
+        public LivroController(ILivroRepository repository, IUsuarioRepository usuarioRepository,IMapper mapper)
         {
             _mapper = mapper;
             _repository = repository;
@@ -77,7 +78,7 @@ namespace AS_poo.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             if(_repository.Delete(id))
