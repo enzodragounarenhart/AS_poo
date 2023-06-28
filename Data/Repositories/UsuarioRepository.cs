@@ -11,9 +11,9 @@ namespace AS_poo.Data.Repositories
     {
         private readonly DataContext context;
 
-        public UsuarioRepository()
+        public UsuarioRepository(DataContext context)
         {
-            this.context = new DataContext();
+            this.context = context;
         }
 
         public Usuario GetById(int entityId)

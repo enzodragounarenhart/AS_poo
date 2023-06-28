@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using AS_poo.Data.Repositories;
 using AS_poo.Domain.Entities;
 using AS_poo.Domain.Interfaces;
+using AS_poo.Domain.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
 
 namespace AS_poo.Controllers
 {
@@ -15,46 +17,63 @@ namespace AS_poo.Controllers
 
     public class LivroController : ControllerBase
     {
-        
+        private readonly IMapper _mapper;
         private readonly ILivroRepository _repository;
 
-        public LivroController()
+        public LivroController(ILivroRepository repository, IMapper mapper)
         {
-            _repository = new LivroRepository();
+            _mapper = mapper;
+            _repository = repository;
         }
 
         [HttpGet]
-        public IEnumerable<Livro> Get()
+        public ActionResult<IEnumerable<Livro>> Get()
         {
-            return _repository.GetAll();
+            var livros = _repository.GetAll();
+            var livrosDTO = _mapper.Map<IEnumerable<LivroDTO>>(livros);
+            return Ok(new {statusCode = 200, message = "OK",livrosDTO});
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public ActionResult<LivroDTO> Get(int id)
         {
-            var item = _repository.GetById(id);
-            if(item == null)
+            var livro = _repository.GetById(id);
+            
+            if(livro == null)
             {
-                return Ok(new { statusCode = 400, message = "Não foi encontrada o livro com id: "+ id,item});
+                return Ok(new { statusCode = 400, message = "Não foi encontrada o livro com id: "+ id,livro});
             }
             else
             {
-                return Ok(new {statusCode = 200, message = "OK", item});
+                var livroDTO = _mapper.Map<LivroDTO>(livro);
+                return Ok(new {statusCode = 200, message = "OK", livroDTO});
             }
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Livro item)
+        public ActionResult Post([FromBody]LivroDTO livroDTO)
         {
-            _repository.Save(item);
-            return Ok(new { statusCode = 200, message = "Livro cadastrado com sucesso.", item});
+            var livro = _mapper.Map<Livro>(livroDTO);
+            _repository.Save(livro);
+            return Ok(new { statusCode = 200, message = "Livro cadastrado com sucesso.", livro});
         }
 
-        [HttpPut]
-        public IActionResult Put([FromBody] Livro item)
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] LivroDTO livroDTO)
         {
-            _repository.Update(item);
-            return Ok(new { statusCode = 200, message = "Livro atualizado com sucesso", item});
+            if(id != livroDTO.Id)
+            {
+                return Ok(new {statusCode = 400, message = "IDs NAO SAO IGUAIS"+ id, livroDTO.Id});
+            }
+
+            var livro = _repository.GetById(id);
+            if (livro == null)
+            {
+                 return Ok(new { statusCode = 400, message = "Não foi encontrada o livro com id: "+ id,livro});
+            }
+            _mapper.Map(livroDTO, livro);
+            _repository.Update(livro);
+            return Ok(new { statusCode = 200, message = "Livro atualizado com sucesso", livro});
 
         }
 

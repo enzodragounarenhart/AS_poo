@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using AS_poo.Data.Repositories;
 using AS_poo.Domain.Entities;
 using AS_poo.Domain.Interfaces;
+using AS_poo.Domain.DTOs;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AS_poo.Controllers
@@ -15,46 +17,63 @@ namespace AS_poo.Controllers
 
     public class UsuarioController : ControllerBase
     {
-        
+        private readonly IMapper _mapper;
         private readonly IUsuarioRepository _repository;
 
-        public UsuarioController()
+        public UsuarioController(IUsuarioRepository repository, IMapper mapper)
         {
-            _repository = new UsuarioRepository();
+            _mapper = mapper;
+            _repository = repository;
         }
 
         [HttpGet]
-        public IEnumerable<Usuario> Get()
+        public ActionResult<IEnumerable<Usuario>> Get()
         {
-            return _repository.GetAll();
+            var Usuarios = _repository.GetAll();
+            var UsuariosDTO = _mapper.Map<IEnumerable<UsuarioDTO>>(Usuarios);
+            return Ok(new {statusCode = 200, message = "OK",UsuariosDTO});
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public ActionResult<UsuarioDTO> Get(int id)
         {
-            var item = _repository.GetById(id);
-            if(item == null)
+            var Usuario = _repository.GetById(id);
+            
+            if(Usuario == null)
             {
-                return Ok(new { statusCode = 400, message = "Não foi encontrada o usuário com id: "+ id,item});
+                return Ok(new { statusCode = 400, message = "Não foi encontrada o Usuario com id: "+ id,Usuario});
             }
             else
             {
-                return Ok(new {statusCode = 200, message = "OK", item});
+                var UsuarioDTO = _mapper.Map<UsuarioDTO>(Usuario);
+                return Ok(new {statusCode = 200, message = "OK", UsuarioDTO});
             }
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Usuario item)
+        public ActionResult Post([FromBody]UsuarioDTO UsuarioDTO)
         {
-            _repository.Save(item);
-            return Ok(new { statusCode = 200, message = "Usuário cadastrado com sucesso.", item});
+            var Usuario = _mapper.Map<Usuario>(UsuarioDTO);
+            _repository.Save(Usuario);
+            return Ok(new { statusCode = 200, message = "Usuario cadastrado com sucesso.", Usuario});
         }
 
-        [HttpPut]
-        public IActionResult Put([FromBody] Usuario item)
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] UsuarioDTO UsuarioDTO)
         {
-            _repository.Update(item);
-            return Ok(new { statusCode = 200, message = "Usuário atualizado com sucesso", item});
+            if(id != UsuarioDTO.Id)
+            {
+                return Ok(new {statusCode = 400, message = "IDs NAO SAO IGUAIS"+ id, UsuarioDTO.Id});
+            }
+
+            var Usuario = _repository.GetById(id);
+            if (Usuario == null)
+            {
+                 return Ok(new { statusCode = 400, message = "Não foi encontrada o Usuario com id: "+ id,Usuario});
+            }
+            _mapper.Map(UsuarioDTO, Usuario);
+            _repository.Update(Usuario);
+            return Ok(new { statusCode = 200, message = "Usuario atualizado com sucesso", Usuario});
 
         }
 
@@ -63,7 +82,7 @@ namespace AS_poo.Controllers
         {
             if(_repository.Delete(id))
             {
-                return Ok(new {StatusCode = 200, message = "Usuário deletado com sucesso"});
+                return Ok(new {StatusCode = 200, message = "Usuario deletado com sucesso"});
             }
             else
             {

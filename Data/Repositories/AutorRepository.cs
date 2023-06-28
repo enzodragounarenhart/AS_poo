@@ -11,9 +11,9 @@ namespace AS_poo.Data.Repositories
     {
         private readonly DataContext context;
 
-        public AutorRepository()
+        public AutorRepository(DataContext context)
         {
-            this.context = new DataContext();
+            this.context = context;
         }
 
         public Autor GetById(int entityId)

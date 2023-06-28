@@ -11,9 +11,9 @@ namespace AS_poo.Data.Repositories
     {
         private readonly DataContext context;
 
-        public LivroRepository()
+        public LivroRepository(DataContext context)
         {
-            this.context = new DataContext();
+            this.context = context;
         }
 
         public Livro GetById(int entityId)

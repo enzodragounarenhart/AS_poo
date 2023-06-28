@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace AS_poo.Domain.Entities
 {
-    public class Autor
+    public class Autor : Entity
     {
-        public int idAutor { get; private set; }
+        public int idAutor { get; set; }
         public string nome { get; set; }
         public string cpf { get; set; }
         public string endereco { get; set; }
         public string contato { get; set; }
+        public virtual ICollection<Livro> Livros { get; set;}
     }
 }

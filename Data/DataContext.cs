@@ -25,10 +25,5 @@ namespace AS_poo.Data
         public DbSet<Usuario> Usuario { get; set;}
         public DbSet<Autor> Autor { get; set;}
         public DbSet<Livro> Livro { get; set;}
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-
-        }
     }
 }
