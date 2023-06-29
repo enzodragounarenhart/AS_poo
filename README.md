@@ -1,32 +1,38 @@
-# AS Programação Orientada a Objetos
+# Sistema de Gerenciamento de Biblioteca (AS)
 
-## Autor: Enzo Dragoun Arenhart ##
+## Descrição
 
-##Instalação do Programa:
 
-###1. Obter o programa
+## Instalação
+1. Executar git clone https://github.com/enzodragounarenhart/AS_poo no git bash
+2. OU baixar o source code e extrair em qualquer lugar
 
+## Execução
+1. Copiar as.db no diretório base para bin/Debug/net7.0
+2. Executar as_poo.exe
+
+## Exemplos
 <details><summary>Requests de HTTP</summary>
 HTTP requests:
 
     GET:
-        127.0.0.1:5034/livro
+        127.0.0.1:5000/livro
             Retorna todos os livros cadastrados no banco de dados.
-        127.0.0.1:5034/livro/{id}
+        127.0.0.1:5000/livro/{id}
             Retorna o livro cujo id corresponde ao id escrito no GET request.
             
-        127.0.0.1:5034/autor
+        127.0.0.1:5000/autor
             Retorna todos os autores cadastrados no banco de dados.
-        127.0.0.1:5034/autor/{id}
+        127.0.0.1:5000/autor/{id}
             Retorna o autor cujo id corresponde ao id escrito no GET request.
         
-        127.0.0.1:5034/usuario
+        127.0.0.1:5000/usuario
             Retorna todos os usuarios cadastrados no banco de dados.
-        127.0.0.1:5034/usuario/{id}
+        127.0.0.1:5000/usuario/{id}
             Retorna o usuario cujo id corresponde ao id escrito no GET request.
 
     POST:
-        127.0.0.1:5034/livro
+        127.0.0.1:5000/livro
             Insere um livro com dados escritos no body da request, formatado em JSON.
             Exemplo: 
                 {
@@ -38,7 +44,7 @@ HTTP requests:
                     "UsuarioId": 1, corresponde ao id do usuario que esta emprestando o livro, pode ser null.
                 }
         
-        127.0.0.1:5034/autor
+        127.0.0.1:5000/autor
             Insere um autor com dados escritos no body da request, formatado em JSON.
             Exemplo:
                 {
@@ -48,7 +54,7 @@ HTTP requests:
                     "contato": "(51)12345-6789"
                 }
         
-        127.0.0.1:5034/usuario
+        127.0.0.1:5000/usuario
             Insere um usuario com dados escritos no body da request, formatado em JSON.
             Exemplo:
                 {
@@ -59,7 +65,7 @@ HTTP requests:
                 }
 
     PUT:
-        127.0.0.1:5034/livro/{id}
+        127.0.0.1:5000/livro/{id}
             Atualiza o livro cujo id corresponde ao id escrito no PUT request.
             Exemplo:
             {
@@ -72,7 +78,7 @@ HTTP requests:
                 "usuarioId": null
             }
 
-        127.0.0.1:5034/autor/{id}
+        127.0.0.1:5000/autor/{id}
             Atualiza o autor cujo id corresponde ao id escrito no PUT request.
             Exemplo:
             {
@@ -83,7 +89,7 @@ HTTP requests:
                 "contato": "(51)98765-4321"
             }
 
-        127.0.0.1:5034/usuario/{id}
+        127.0.0.1:5000/usuario/{id}
             Atualiza o usuario cujo id corresponde ao id escrito no PUT request.
             Exemplo:
             {
@@ -93,20 +99,20 @@ HTTP requests:
                 "endereco": "Rua Another 111",
                 "contato": "(51)09876-5432"
             }
-        127.0.0.1:5034/usuario/{idUsuario}/emprestar/{idLivro}
+        127.0.0.1:5000/usuario/{idUsuario}/emprestar/{idLivro}
             Empresta um livro para o usuario especificado
 
-        127.0.0.1:5034/usuario/{idUsuario}/devolver/{idLivro}
+        127.0.0.1:5000/usuario/{idUsuario}/devolver/{idLivro}
             Devolve um usuario especifico livro do usuario especificado
 
 
     DELETE:
-        127.0.0.1:5034/livro/{id}
+        127.0.0.1:5000/livro/{id}
             Deleta o livro especificado do banco de dados
         
-        127.0.0.1:5034/livro/{id}
+        127.0.0.1:5000/livro/{id}
             Deleta o livro especificado do banco de dados
         
-        127.0.0.1:5034/livro/{id}
+        127.0.0.1:5000/livro/{id}
             Deleta o livro especificado do banco de dados
 </details>
