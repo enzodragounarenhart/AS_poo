@@ -2,11 +2,11 @@
 
 ## Descrição
 
-    O sistema de Gerenciamento de Bibliotica é uma api desenvolvida para facilitar o gerenciamento de bibliotecas.
-    Foram criadas três entidades, Usuario, Livro e Autor, com suas respectivas ViewModels e DTOs, para o armazenamento de dados.
-    Para manipular dados, foram criados três repositórios para as três entidades. Os reposiórios manipulam dados através de 5 funções,
+O sistema de Gerenciamento de Bibliotica é uma api desenvolvida para facilitar o gerenciamento de bibliotecas.
+Foram criadas três entidades, Usuario, Livro e Autor, com suas respectivas ViewModels e DTOs, para o armazenamento de dados.
+Para manipular dados, foram criados três repositórios para as três entidades. Os reposiórios manipulam dados através de 5 funções,
 que utilizam o DbContext para criar strings de SQL para fazerem o CRUD de dados.
-    Para que o usuário consiga manusear os dados do sistema, foram criados três controllers. Os controllers recebem requests HTTP REST
+Para que o usuário consiga manusear os dados do sistema, foram criados três controllers. Os controllers recebem requests HTTP REST
 de GET, POST, PUT, E DELETE dos usuários e e processam estas requests em métodos HTTP, que utilizam as funções de repositório das entidades de dados.
     
 
