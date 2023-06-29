@@ -1,7 +1,7 @@
 # AS Programação Orientada a Objetos
 ## Autor: Enzo Dragoun Arenhart
 
-<details><summary> ##Requests de HTTP</summary>
+<details><summary>Requests de HTTP</summary>
 HTTP requests:
 
     GET:
