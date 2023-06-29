@@ -6,6 +6,7 @@ using AS_poo.Data.Repositories;
 using AS_poo.Domain.Entities;
 using AS_poo.Domain.Interfaces;
 using AS_poo.Domain.DTOs;
+using AS_poo.Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 
@@ -19,11 +20,12 @@ namespace AS_poo.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ILivroRepository _repository;
-        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IAutorRepository _autorRepository;
 
-        public LivroController(ILivroRepository repository, IUsuarioRepository usuarioRepository,IMapper mapper)
+        public LivroController(ILivroRepository repository, IUsuarioRepository usuarioRepository, IAutorRepository autorRepository, IMapper mapper)
         {
             _mapper = mapper;
+           _autorRepository = autorRepository;
             _repository = repository;
         }
 
@@ -52,27 +54,45 @@ namespace AS_poo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody]LivroDTO livroDTO)
+        public ActionResult Post([FromBody]LivroViewModel livroVM)
         {
-            var livro = _mapper.Map<Livro>(livroDTO);
+            var livro = _mapper.Map<Livro>(livroVM);
             _repository.Save(livro);
             return Ok(new { statusCode = 200, message = "Livro cadastrado com sucesso.", livro});
         }
 
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] LivroDTO livroDTO)
+        /*[HttpPut("{livroId}/autores/{autorId}")]
+        public ActionResult AddAutor(int autorId, int livroId)
         {
-            if(id != livroDTO.Id)
+            var autor = _autorRepository.GetById(autorId);
+            var livro = _repository.GetById(livroId);
+
+            if (autor == null || livro == null)
             {
-                return Ok(new {statusCode = 400, message = "IDs NAO SAO IGUAIS"+ id, livroDTO.Id});
+                return Ok(new { statusCode = 400, message = "Não foi encontrada o livro ou o autor: "});
             }
 
-            var livro = _repository.GetById(id);
+            livro.Autores.Add(autor);
+            _repository.Update(livro);
+
+            return Ok(new { statusCode = 200, message = "Livro atualizado com sucesso", livro});
+        }*/
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody]LivroViewModel livroVM)
+        {
+            var livro = _mapper.Map<Livro>(livroVM);
+
+            if(id != livro.Id)
+            {
+                return Ok(new {statusCode = 400, message = "IDs NAO SAO IGUAIS"+ id, livro.Id});
+            }
+
+
             if (livro == null)
             {
                  return Ok(new { statusCode = 400, message = "Não foi encontrada o livro com id: "+ id,livro});
             }
-            _mapper.Map(livroDTO, livro);
             _repository.Update(livro);
             return Ok(new { statusCode = 200, message = "Livro atualizado com sucesso", livro});
 

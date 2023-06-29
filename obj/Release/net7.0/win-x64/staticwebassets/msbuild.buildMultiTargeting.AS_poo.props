@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\AS_poo.props" />
+</Project>

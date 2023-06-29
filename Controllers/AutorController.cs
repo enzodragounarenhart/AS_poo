@@ -19,12 +19,14 @@ namespace AS_poo.Controllers
     {
         
         private readonly IAutorRepository _repository;
+        private readonly ILivroRepository _livroRepository;
         private readonly IMapper _mapper;
 
-        public AutorController(IAutorRepository repository, IMapper mapper)
+        public AutorController(IAutorRepository repository, ILivroRepository livroRepository, IMapper mapper)
         {
             _mapper = mapper;
             _repository = repository;
+            _livroRepository = livroRepository;
         }
 
         [HttpGet]
@@ -58,6 +60,23 @@ namespace AS_poo.Controllers
             _repository.Save(Autor);
             return Ok(new { statusCode = 200, message = "Autor cadastrado com sucesso.", Autor});
         }
+
+        /*[HttpPut("{autorId}/livros/{livroId}")]
+        public ActionResult AddLivro(int autorId, int livroId)
+        {
+            var autor = _repository.GetById(autorId);
+            var livro = _livroRepository.GetById(livroId);
+
+            if (autor == null || livro == null)
+            {
+                return Ok(new { statusCode = 400, message = "Não foi encontrada o livro ou o autor: "});
+            }
+
+            autor.Livros.Add(livro);
+            _repository.Update(autor);
+
+            return Ok(new { statusCode = 200, message = "Autor atualizado com sucesso", autor});
+        }*/
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] AutorDTO AutorDTO)

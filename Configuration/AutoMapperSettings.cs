@@ -13,12 +13,12 @@ namespace WebApi.Configuration
     {
         public AutoMapperDTOs()
         {
-            CreateMap<LivroDTO, Livro>().PreserveReferences().MaxDepth(0);
-            CreateMap<AutorDTO, Autor>().PreserveReferences().MaxDepth(0);
-            CreateMap<UsuarioDTO, Usuario>().PreserveReferences().MaxDepth(0);
-            CreateMap<Livro, LivroDTO>().PreserveReferences().MaxDepth(0);
-            CreateMap<Autor, AutorDTO>().PreserveReferences().MaxDepth(0);
-            CreateMap<Usuario, UsuarioDTO>().PreserveReferences().MaxDepth(0);
+            CreateMap<LivroDTO, Livro>();
+            CreateMap<AutorDTO, Autor>();
+            CreateMap<UsuarioDTO, Usuario>();
+            CreateMap<Livro, LivroDTO>();
+            CreateMap<Autor, AutorDTO>();
+            CreateMap<Usuario, UsuarioDTO>();
         
         }
     }

@@ -60,7 +60,7 @@ namespace AS_poo.Controllers
             return Ok(new { statusCode = 200, message = "Usuario cadastrado com sucesso.", Usuario});
         }
 
-        [HttpPost("{usuarioId}/emprestar/{livroId}", Name = "EmprestarLivro")]
+        [HttpPut("{usuarioId}/emprestar/{livroId}", Name = "EmprestarLivro")]
         public ActionResult EmprestarLivro(int usuarioId, int livroId)
         {
             var usuario = _usuarioRepository.GetById(usuarioId);
@@ -88,7 +88,7 @@ namespace AS_poo.Controllers
 
         }
 
-        [HttpPost("{usuarioId}/devolver/{livroId}", Name = "DevolverLivro")]
+        [HttpPut("{usuarioId}/devolver/{livroId}", Name = "DevolverLivro")]
         public ActionResult DevolverLivro(int usuarioId, int livroId)
         {
             var usuario = _usuarioRepository.GetById(usuarioId);

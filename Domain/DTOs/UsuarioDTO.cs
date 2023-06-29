@@ -14,6 +14,6 @@ namespace AS_poo.Domain.DTOs
     public string Endereco { get; set; }
     public string Contato { get; set; }
 
-    public List<LivroDTO> LivrosEmprestados { get; set; }
+    public List<LivroDTO> LivrosEmprestados { get; set; }  = new List<LivroDTO>();
 }
 }

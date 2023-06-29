@@ -1,9 +1,11 @@
 using AS_poo.Data;
 using AS_poo.Data.Repositories;
 using AS_poo.Domain.Interfaces;
+using AS_poo.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(Program));

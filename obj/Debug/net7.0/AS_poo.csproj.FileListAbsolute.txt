@@ -76,3 +76,8 @@ G:\Codes\AS_poo\obj\Debug\net7.0\refint\AS_poo.dll
 G:\Codes\AS_poo\obj\Debug\net7.0\AS_poo.pdb
 G:\Codes\AS_poo\obj\Debug\net7.0\AS_poo.genruntimeconfig.cache
 G:\Codes\AS_poo\obj\Debug\net7.0\ref\AS_poo.dll
+G:\Codes\AS_poo\bin\Debug\net7.0\Executavel\web.config
+G:\Codes\AS_poo\bin\Debug\net7.0\Executavel\appsettings.Development.json
+G:\Codes\AS_poo\bin\Debug\net7.0\Executavel\appsettings.json
+G:\Codes\AS_poo\bin\Debug\net7.0\Executavel\AS_poo.deps.json
+G:\Codes\AS_poo\bin\Debug\net7.0\Executavel\AS_poo.runtimeconfig.json

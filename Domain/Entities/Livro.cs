@@ -14,7 +14,7 @@ namespace AS_poo.Domain.Entities
         public string genero { get; set; }
         public int emprestado { get; set; }
         public int ano { get; set;}
-        public virtual ICollection<Autor> Autores { get; set;}
+        public virtual ICollection<Autor> Autores { get; set;}  = new List<Autor>();
         public int? UsuarioId { get; set;}
         public Usuario Usuario { get; set;}
     }
