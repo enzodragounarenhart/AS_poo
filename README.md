@@ -1,7 +1,30 @@
-# AS Programação Orientada a Objetos
-## Autor: Enzo Dragoun Arenhart
+# Sistema de Gerenciamento de Biblioteca (AS)
 
-<details><summary> ##Requests de HTTP</summary>
+## Descrição
+    O sistema de Gerenciamento de Bibliotica é uma api desenvolvida para facilitar o gerenciamento de bibliotecas.
+    Foram criadas três entidades, Usuario, Livro e Autor, com suas respectivas ViewModels e DTOs, para o armazenamento de dados.
+    Para manipular dados, foram criados três repositórios para as três entidades. Os reposiórios manipulam dados através de 5 funções,
+que utilizam o DbContext para criar strings de SQL para fazerem o CRUD de dados.
+    Para que o usuário consiga manusear os dados do sistema, foram criados três controllers. Os controllers recebem requests HTTP REST
+de GET, POST, PUT, E DELETE dos usuários e e processam estas requests em métodos HTTP, que utilizam as funções de repositório das entidades de dados.
+    
+
+## Instalação
+1. Executar git clone https://github.com/enzodragounarenhart/AS_poo no git bash.
+2. OU baixar o source code e extrair em qualquer lugar.
+3. Abrir o diretório do programa no CMD ou PowerShell.
+4. Executar dotnet restore para baixar todas as dependencias do programa.
+
+## Execução
+1. Abrir o diretório do programa no CMD ou PowerShell ou equivalente.
+2. Executar o comando dotnet ef database update para criar a base de dados e aplicar as migrations.
+3. Executar o comando dotnet run para executar o programa.
+
+A API está disponível no endereçoÇ http://localhost:5034 OU http://127.0.0.1:5034
+
+## Exemplos
+Aqui estão exemplos de requests que podem ser feitas para a api.
+<details><summary>Requests de HTTP</summary>
 HTTP requests:
 
     GET:
