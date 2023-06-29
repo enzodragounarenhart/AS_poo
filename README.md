@@ -1,8 +1,8 @@
 # AS Programação Orientada a Objetos
 
-## Autor: Enzo Dragoun Arenhart
+## Autor: Enzo Dragoun Arenhart ##
 
-##Instalação do ProgramaÇ
+##Instalação do Programa:
 
 ###1. Obter o programa
 
