@@ -1,5 +1,7 @@
+# AS Programação Orientada a Objetos
+## Autor: Enzo Dragoun Arenhart
 
-
+<details><summary> ##Requests de HTTP</summary>
 HTTP requests:
 
     GET:
@@ -102,3 +104,4 @@ HTTP requests:
         
         127.0.0.1:5034/livro/{id}
             Deleta o livro especificado do banco de dados
+</details>
