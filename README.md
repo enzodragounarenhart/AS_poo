@@ -1,6 +1,7 @@
 # Sistema de Gerenciamento de Biblioteca (AS)
 
 ## Descrição
+
     O sistema de Gerenciamento de Bibliotica é uma api desenvolvida para facilitar o gerenciamento de bibliotecas.
     Foram criadas três entidades, Usuario, Livro e Autor, com suas respectivas ViewModels e DTOs, para o armazenamento de dados.
     Para manipular dados, foram criados três repositórios para as três entidades. Os reposiórios manipulam dados através de 5 funções,
