@@ -21,7 +21,7 @@ de GET, POST, PUT, E DELETE dos usuários e e processam estas requests em métod
 2. Executar o comando dotnet ef database update para criar a base de dados e aplicar as migrations.
 3. Executar o comando dotnet run para executar o programa.
 
-A API está disponível no endereçoÇ http://localhost:5034 OU http://127.0.0.1:5034
+A API está disponível no endereço: http://localhost:5034 OU http://127.0.0.1:5034
 
 ## Exemplos
 Aqui estão exemplos de requests que podem ser feitas para a api.
